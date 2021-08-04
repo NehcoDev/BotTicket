@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const nehco = new Discord.Client();
+const bot = new Discord.Client();
 const fs = require('fs');
-const TOKEN = "VOTRE TOKEN";
+const TOKEN = "TOKEN";
 
 const loadEvents = (dir) => {
     fs.readdirSync(dir).forEach(dirs => {
@@ -9,12 +9,11 @@ const loadEvents = (dir) => {
         for(let file of events) {
             let getFileName = require(`${dir}/${dirs}/${file}`)
             let eventName = file.split('.')[0]
-            nehco.on(eventName, getFileName.bind(null, nehco))
+            bot.on(eventName, getFileName.bind(null, bot))
         }
-    }) 
+    })
 }
-nehco.login(TOKEN)
 loadEvents("./Events/")
+bot.login(TOKEN)
 
-
-//// Bot crée par Nehco#0001 
+//// Bot crée par Nehco#0001
