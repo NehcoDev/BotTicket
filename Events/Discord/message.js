@@ -8,16 +8,16 @@ module.exports = async(bot, message) => {
 
  if(!message.guild){
    if(message.author.bot) return;
-   var guild = bot.guilds.cache.find(g => g.id === "")
-   const STAFF = guild.roles.cache.find(role => role.name == '')
+   var guild = bot.guilds.cache.find(g => g.id === "ID DE VOTRE SERVEUR")
+   const STAFF = guild.roles.cache.find(role => role.name == 'NOM DU ROLE POUR VOIR LE TICKET')
    const everyone = guild.roles.everyone
    const yourchannel = guild.channels.cache.find(channel => channel.name === message.author.id)
    if(yourchannel === undefined) {
 
     message.channel.send("**[FR] Votre message à bien été reçu par notre équipe ! Nous vous recontacterons dès que possible !**")
-    var categoryID = guild.channels.cache.find(channel => channel.name == "" && channel.type == "category");
+    var categoryID = guild.channels.cache.find(channel => channel.name == "NOM DU CHANNEL" && channel.type == "category");
      if (!categoryID) {
-         guild.channels.create('', { type: "category" }).then(category => {
+         guild.channels.create('NOM DU CHANNEL', { type: "category" }).then(category => {
              categoryID = category.id
          })
      } else {
